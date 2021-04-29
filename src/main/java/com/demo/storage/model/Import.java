@@ -1,5 +1,7 @@
 package com.demo.storage.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -10,47 +12,25 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "account")
+@Table(name = "import")
 @EntityListeners(AuditingEntityListener.class)
 @Getter
 @Setter
-public class Account {
-
+public class Import {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Integer id;
 
-    @Column(name = "username", nullable = false, unique = true)
-    private String userName;
+    @Column(name = "created_date")
+    private Date createdDate;
 
-    @Column(name = "email")
-    private String email;
-
-    @JsonIgnore
-    @Column(name = "password")
-    private String password;
-
-    @Column(name = "full_name")
-    private String fullName;
-
-    @Column(name = "phone")
-    private String phone;
-
-    @Column(name = "address")
-    private String address;
-
-    @Column(name = "balance")
-    private Integer balance;
-
+    @Column(name = "vendor")
     @ManyToOne(fetch = FetchType.LAZY)
-    private Role role;
-
+    private Vendor vendor;
 }
