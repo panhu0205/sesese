@@ -1,4 +1,4 @@
-package com.onebestchoice.zassi.dto;
+package com.demo.dto;
 
 import lombok.Data;
 
