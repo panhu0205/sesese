@@ -1,5 +1,7 @@
 package com.demo.storage.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -7,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -31,15 +34,15 @@ public class Account {
     @Column(name = "username", nullable = false, unique = true)
     private String userName;
 
-    @Column(name = "email")
-    private String email;
+    // @Column(name = "email")
+    // private String email;
 
     @JsonIgnore
     @Column(name = "password")
     private String password;
 
-    @Column(name = "full_name")
-    private String fullName;
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "phone")
     private String phone;
@@ -50,7 +53,11 @@ public class Account {
     @Column(name = "balance")
     private Integer balance;
 
+    @Column(name = "birthday")
+    private Date birthday;
+    
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "role_id")
     private Role role;
 
 }
